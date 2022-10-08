@@ -8,11 +8,19 @@ interface ICreateUserDTO {
   email: string;
 }
 
+interface IUserResponseDTO {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 interface IUsersRepository {
   create(data: ICreateUserDTO): Promise<void>;
   findByEmail(email: string): Promise<User>;
   findById(id: string): Promise<User>;
   findAll(): Promise<User[]>;
+  update(data: ICreateUserDTO): Promise<User>;
 }
 
-export { IUsersRepository, ICreateUserDTO };
+export { IUsersRepository, ICreateUserDTO, IUserResponseDTO };

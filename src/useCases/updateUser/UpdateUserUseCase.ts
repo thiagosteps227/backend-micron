@@ -5,35 +5,40 @@ import {
   IUsersRepository,
   ICreateUserDTO,
 } from "../../repositories/IUsersRepository";
+import { User } from "src/entities/User";
 
 @injectable()
-class CreateUserUseCase {
+class UpdateUserUseCase {
   constructor(
     @inject("UsersRepository")
     private usersRepository: IUsersRepository
   ) {}
 
   async execute({
+    id,
     firstName,
     lastName,
     email,
     password,
-  }: ICreateUserDTO): Promise<void> {
-    const userAlreadyExists = await this.usersRepository.findByEmail(email);
+  }: ICreateUserDTO): Promise<User> {
+    const user = await this.usersRepository.findById(id);
 
-    if (userAlreadyExists) {
-      throw new AppError("User Already Exists!");
+    if (!user) {
+      throw new AppError("User does not exist!");
     }
 
     const passwordHash = await hash(password, 8);
 
-    await this.usersRepository.create({
+    const updatedUser = await this.usersRepository.update({
+      id,
       firstName,
       lastName,
       email,
       password: passwordHash,
     });
+
+    return updatedUser;
   }
 }
 
-export { CreateUserUseCase };
+export { UpdateUserUseCase };

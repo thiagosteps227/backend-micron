@@ -10,6 +10,9 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  update(data: ICreateUserDTO): Promise<User> {
+    return this.repository.save(data);
+  }
   findAll(): Promise<User[]> {
     return this.repository.find();
   }
