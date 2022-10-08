@@ -10,6 +10,9 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  findAll(): Promise<User[]> {
+    return this.repository.find();
+  }
 
   async create({
     firstName,

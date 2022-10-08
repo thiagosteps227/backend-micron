@@ -8,9 +8,9 @@ class GetUserController {
 
     const getUserUseCase = container.resolve(GetUserUseCase);
 
-    await getUserUseCase.execute(id);
+    const user = await getUserUseCase.execute(id);
 
-    return response.status(201).send();
+    return response.status(200).send(user);
   }
 }
 
