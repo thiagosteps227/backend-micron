@@ -3,8 +3,9 @@ import { AppError } from "../../AppError";
 import {
   IUsersRepository,
   ICreateUserDTO,
+  IUserResponseDTO,
 } from "../../repositories/IUsersRepository";
-import { User } from "src/entities/User";
+import { UserMap } from "src/mapper/UserMap";
 
 @injectable()
 class GetUserUseCase {
@@ -13,14 +14,14 @@ class GetUserUseCase {
     private usersRepository: IUsersRepository
   ) {}
 
-  async execute(id: string): Promise<User> {
+  async execute(id: string): Promise<IUserResponseDTO> {
     const user = await this.usersRepository.findById(id);
 
     if (!user) {
       throw new AppError("User does not exist!");
     }
 
-    return user;
+    return UserMap.toDTO(user);
   }
 }
 
