@@ -4,14 +4,25 @@
          "es5",
          "es6"
       ],
+      "types": ["node", "jest"],
       "target": "es5",
       "module": "commonjs",
       "moduleResolution": "node",
       "outDir": "./build",
       "baseUrl": "./",
+      "rootDir": "./",
+      "paths": {
+         "src/useCases/*": ["src/useCases/*"],
+         "src/config/*": ["src/config/*"],
+         "src/shared/*": ["src/shared/*"],
+         "src/entities/*": ["src/entities/*"],
+     },  
       "esModuleInterop": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "sourceMap": true
-   }
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      
+   },
+   "include": ["."]
 }

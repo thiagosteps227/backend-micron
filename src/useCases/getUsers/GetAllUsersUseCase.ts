@@ -1,11 +1,8 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../AppError";
 import {
   IUsersRepository,
-  ICreateUserDTO,
   IUserResponseDTO,
 } from "../../repositories/IUsersRepository";
-import { User } from "src/entities/User";
 import { UserMap } from "src/mapper/UserMap";
 
 @injectable()
