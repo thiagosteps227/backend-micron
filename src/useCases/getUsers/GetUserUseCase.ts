@@ -5,7 +5,7 @@ import {
   ICreateUserDTO,
   IUserResponseDTO,
 } from "../../repositories/IUsersRepository";
-import { UserMap } from "src/mapper/UserMap";
+import { UserMap } from "./../../mapper/UserMap";
 
 @injectable()
 class GetUserUseCase {

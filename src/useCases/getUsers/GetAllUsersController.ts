@@ -7,7 +7,6 @@ class GetAllUsersController {
     const getAllUsersUseCase = container.resolve(GetAllUsersUseCase);
 
     const users = await getAllUsersUseCase.execute();
-    console.log("controller", users);
 
     return response.status(200).send(users);
   }

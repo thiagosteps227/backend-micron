@@ -15,6 +15,7 @@ const getAllUsersController = new GetAllUsersController();
 
 const updateUserController = new UpdateUserController();
 
+//only authenticated users can access the routes containing the middleware ensureAuthenticated
 usersRoutes.post("/new", createUserController.handle);
 usersRoutes.get("/:id", ensureAuthenticated, getUserController.handle);
 usersRoutes.get("/", getAllUsersController.handle);

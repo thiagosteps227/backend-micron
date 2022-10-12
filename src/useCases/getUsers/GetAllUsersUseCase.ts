@@ -3,7 +3,7 @@ import {
   IUsersRepository,
   IUserResponseDTO,
 } from "../../repositories/IUsersRepository";
-import { UserMap } from "src/mapper/UserMap";
+import { UserMap } from "./../../mapper/UserMap";
 
 @injectable()
 class GetAllUsersUseCase {
@@ -20,7 +20,6 @@ class GetAllUsersUseCase {
     await Promise.all(
       users.map((user) => {
         profiles.push(UserMap.toDTO(user));
-        console.log(profiles);
       })
     );
 

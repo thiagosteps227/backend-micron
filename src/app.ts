@@ -20,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 app.use(router);
 
+//error handling in case of an error not catched by the application
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof AppError) {
